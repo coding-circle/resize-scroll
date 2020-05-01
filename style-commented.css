@@ -1,0 +1,129 @@
+body {
+  /* 
+     body elements typically have a default margin, to make simple
+     text documents present well with no styles. You usually want to 
+     override this default 
+   */
+  margin: 0;
+  /* 
+     set an SVG graphic as a background image. it repeats by default, 
+     but that can be changed with the background-repeat property 
+   */
+  background: url('checker.svg');
+}
+
+////////////////////////////////////////////////////////////////////////////////
+article {
+  /* 
+     if you remember our flexbox session: this is kind of a weird use 
+     of flexbox, but here's what's happening: 
+
+     - the article has a minimum height of 10000px, which is what causes the 
+     body to overflow and add a scroll bar
+
+     - since <article> is a flex container (has 'display: flex'), and its 
+     direction is set to column (has 'flex-direction: column'), anything inside 
+     it stacks vertically.
+
+     - the 'justify-content: space-between' forces all child elements of the
+     flex container (the green "Scrolling" header #start and the red "fin" 
+     paragraph #end) to display as far apart from each other as possible.
+     if 'flex-direction' was set to 'row', the children would be split 
+     side-by-side. Since it's set to 'column', they pin to the top and bottom
+     of the 10,000px article
+   */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 10000px;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+article h1,
+article p {
+  padding: 0.5em;
+}
+
+article h1 {
+  color: black;
+  background: Aquamarine;
+}
+
+article p {
+  color: white;
+  background: Crimson;
+  text-align: right;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+#info {
+  /*
+     'position: fixed' allows the #info div to float on top of everything else.
+     this #info div comes after the <article> in index.html; if you didn't have
+     'position: fixed' set (the default being equivalent to setting 
+     'position: static'), #info would end up at the bottom of the page.
+
+     - if it was set at 'position: absolute', #info would display in the same
+     starting position as if it was 'fixed', but would scroll with the page.
+     
+     - if it was set at 'position: relative', it would also end up at the bottom
+     of the screen (like 'static'), but any child elements with a 'position',
+     and a 'top', 'right', 'bottom', or 'left' declaration would be positioned
+     'relative' to #info (the usefulness of this may not be initially apparent).
+   */
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 200px;
+  min-height: 150px;
+  padding: 1em;
+  color: white;
+  /* make it semi-transparent, on a scale from 0.0 to 1.0 (ex: 0.375) */
+  opacity: 0.8;
+  /* give it a gray shadow that fully dissapates after 30px */
+  box-shadow: 0 0 30px gray;
+}
+
+#info p {
+  /* 
+     make each <p> of #info a flex container, so we can force-justify the
+     initial text and the <span> elements to the sides of #info
+   */
+  display: flex;
+  justify-content: space-between;
+  /* ensure each flexy line spans the full width of #info's interior */
+  width: 100%;
+}
+
+/* 
+   this means: 'select all <p> tags that are the first 
+   immediate child element of #info' 
+ */
+#info p:first-child {
+  /* underline the first paragraph */
+  text-decoration: underline;
+}
+
+#info button {
+  background: white;
+  padding: 0.5em;
+  /* if this was 50%, the buttons would be kissing. Scandalous! */
+  width: 45%;
+}
+
+#info a {
+  color: white;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+h1, p {
+  margin: 0;
+}
+
+/* 
+   this means: 'select all <p>s that are directly after an adjacent sibling <p>
+   effectively, this means: 'all paragraphs except the first one'
+ */
+p + p {
+  margin-top: 0.5em;
+}
