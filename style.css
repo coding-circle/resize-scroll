@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  background: url('checker.svg');
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 10000px;
+}
+
+article h1,
+article p {
+  padding: 0.5em;
+}
+
+article h1 {
+  color: black;
+  background: Aquamarine;
+}
+
+article p {
+  color: white;
+  background: Crimson;
+  text-align: right;
+}
+
+#info {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 200px;
+  min-height: 150px;
+  padding: 1em;
+  color: white;
+  opacity: 0.8;
+  box-shadow: 0 0 30px gray;
+}
+
+#info p {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#info p:first-child {
+  text-decoration: underline;
+}
+
+#info button {
+  background: white;
+  padding: 0.5em;
+  width: 45%;
+}
+
+#info a {
+  color: white;
+}
+
+h1, p {
+  margin: 0;
+}
+
+h1 + h1,
+p + p {
+  margin-top: 0.5em;
+}
