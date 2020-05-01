@@ -2,14 +2,10 @@ window.addEventListener('load', main);
 
 function main() {
   window.addEventListener('scroll', handleScrollFramerate);
-
-  updateScrollPosition();
-  updateInfoBackground();
+  onScroll();
 
   window.addEventListener('resize', handleResizeFramerate);
-
-  updateWindowDimensions();
-  updateWindowBackground();
+  onResize();
 
   var scrollUpButton = document.getElementById('scroll-up');
   scrollUpButton.addEventListener('click', scrollToStart);
