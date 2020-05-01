@@ -35,7 +35,7 @@ function updateScrollPosition() {
 } 
 
 function updateInfoBackground() {
-  var bodyHeight = document.body.clientHeight;
+  var bodyHeight = document.body.clientHeight - window.innerHeight;
   var scrollPercentage = window.scrollY / bodyHeight;
   var info = document.getElementById('info');
   info.style.background = `hsl(${parseInt(360 * scrollPercentage)}, 100%, 50%)`;
@@ -74,9 +74,9 @@ function scrollToStart() {
 }
 
 function scrollToEnd() {
-  var bodyHeight = document.body.clientHeight;
+  var bodyHeight = document.body.clientHeight - window.innerHeight;
   window.scroll({
-    top: bodyHeight - window.innerHeight,
+    top: bodyHeight,
     left: 0,
     behavior: 'smooth'
   });
